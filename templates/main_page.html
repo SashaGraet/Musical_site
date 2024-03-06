@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/main_page_css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="pagecontainer">
+        <div class="navbar-top" id="myNavbar">
+            <a href="#home" class="active">Главная</a>
+            <a href="#search">Поиск</a>
+            <a href="#create">Регистрация</a>
+            <a href="#login">Авторизация</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+        </div>
+        <div class="main">
+            <div id="bannerslider"></div>
+            <footer class="footer-area"></footer>
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+          var x = document.getElementById("myNavbar");
+          if (x.className === "navbar-top") {
+            x.className += " responsive";
+          } else {
+            x.className = "navbar-top";
+          }
+        }
+        </script>
+</body>
+</html>
