@@ -15,12 +15,26 @@
             <a href="#create">Регистрация</a>
             <a href="#login">Авторизация</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
+                <i class="fa fa-bars"></i></a>
         </div>
-        <div class="main">
-            <div id="bannerslider"></div>
-            <footer class="footer-area"></footer>
+        <div id="bannerslider">
+            <div class="slide">
+                <img src="../static/images/1slide.webp" />
+            </div>
+            <div class="slide">
+                <img src="../static/images/2slide.webp" />
+            </div>
+            <div class="slide">
+                <img src="../static/images/3slide.webp" />
+            </div>
+            <div class="slide">
+                <img src="../static/images/4slide.webp" />
+            </div>
+            <div class="slide">
+                <img src="../static/images/5slide.webp" />
+            </div>
         </div>
+       
     </div>
     <script>
         function myFunction() {
@@ -31,6 +45,18 @@
             x.className = "navbar-top";
           }
         }
-        </script>
+
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slideInterval = 3000;
+
+        function changeSlide() {
+            slides[currentIndex].style.opacity = 0;
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].style.opacity = 1;
+        }
+
+        setInterval(changeSlide, slideInterval);
+    </script>
 </body>
 </html>
