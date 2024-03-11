@@ -6,6 +6,7 @@ body {
 .navbar-top {
   overflow: hidden;
   background-color: #333;
+  z-index: 10;
   position: fixed;
   top: 0;
   width: 100%;
@@ -19,6 +20,7 @@ body {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  z-index: 10;
 }
 
 .navbar-top a:hover {
@@ -58,26 +60,35 @@ body {
 }
 
 #bannerslider {
-  margin-top: 48px;
   position: relative;
   width: 100%;
-  height: 1080px;
-  overflow: hidden;
+  height: auto;
 }
 
 .slide {
   position: absolute;
   width: 100%;
-  height: 80%;
+  height: auto;
   opacity: 0;
   transition: opacity 5s;
+  background-color: black;
 }
 
-.slide img {
+img {
   width: 100%;
-  height: 100%;
+  height: 90%;
+  max-inline-size: 100%;
+  block-size: auto;
+  object-fit: cover;
+  object-position: top center;
+
 }
 
 .slide:first-child {
+  position: absolute;
   opacity: 1;
+}
+
+#footer {
+
 }
