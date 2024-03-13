@@ -79,7 +79,7 @@ body {
 }
 
 /* Добавить цвет фона, когда входы получают фокус */
-input[type=text]:focus, input[type=password]:focus {
+input[type=text], input[type=password], input[type=date], input[type=tel] {
   background-color: #ddd;
   outline: none;
 }
