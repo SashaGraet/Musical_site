@@ -180,5 +180,7 @@ hr {
     font: 1em sans-serif;
     border: solid black 2px;
 }
-
+form {
+  margin: 0 15% 0 15%;
+}
    

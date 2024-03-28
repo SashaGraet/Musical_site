@@ -9,73 +9,73 @@
 </head>
 <body>
     <div id="pagecontainer">
-        <div class="topnav" id="myTopnav">
-          <a href="main_page_without_slider.html" class="active">Главная</a>
-          <a href="search_group.html">Поиск</a>
-          <a href="register_page.html">Регистрация</a>
-          <a href="#login">Авторизация</a>
-          <a href="big_profile_page.html">Профиль</a>
-          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-          </a>
-        </div>
-        <div id="main">
-            <form action="../action_page.php" style="border:1px solid #ccc">
-                <div class="container">
-                  <h1>Регистрация аккаунта</h1>
-                  <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
-                  <hr>
-              
-                  <label for="email"><b>E-mail</b></label>
-                  <input type="text" placeholder=" Ведите E-mail" name="email" required>
+      <div class="topnav" id="myTopnav">
+        <a href="main_page_without_slider.html" class="active">Главная</a>
+        <a href="search_group.html">Поиск участников</a>
+        <a href="search_group.html">Поиск музыкальных групп</a>
+        <a href="register_page.html">Регистрация</a>
+        <a href="big_profile_page.html">Профиль</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      <div id="main">
+          <form action="../action_page.php" style="border:1px solid #ccc">
+            <div class="container">
+              <h1>Регистрация аккаунта</h1>
+              <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
+              <hr>
+          
+              <label for="email"><b>E-mail</b></label>
+              <input type="text" placeholder=" Ведите E-mail" name="email" required>
 
-                  <label for="login"><b>Логин</b></label>
-                  <input type="text" placeholder=" Ведите Логин" name="login" required>
+              <label for="login"><b>Логин</b></label>
+              <input type="text" placeholder=" Ведите Логин" name="login" required>
 
-                  <label for="name"><b>Имя</b></label>
-                  <input type="text" placeholder=" Ведите Имя" name="name" required>
+              <label for="name"><b>Имя</b></label>
+              <input type="text" placeholder=" Ведите Имя" name="name" required>
 
-                  <label for="surname"><b>Фамилия</b></label>
-                  <input type="text" placeholder=" Ведите Фамилию" name="surname" required>
+              <label for="surname"><b>Фамилия</b></label>
+              <input type="text" placeholder=" Ведите Фамилию" name="surname" required>
 
-                  <label for="sity"><b>Город</b></label>
-                  <input type="text" placeholder=" Ведите Город" name="sity" required>
+              <label for="sity"><b>Город</b></label>
+              <input type="text" placeholder=" Ведите Город" name="sity" required>
 
-                  <label for="instrument"><b>Инструмент на котором играете</b></label>
-                  <input type="text" placeholder=" Ведите Инструмент" name="instrument" required>
-              
-                  <label for="phone"><b>Телефон</b></label>
-                  <input type="tel" placeholder=" Ведите телефон" name="phone" required>
+              <label for="instrument"><b>Инструмент на котором играете</b></label>
+              <input type="text" placeholder=" Ведите Инструмент" name="instrument" required>
+          
+              <label for="phone"><b>Телефон</b></label>
+              <input type="tel" placeholder=" Ведите телефон" name="phone" required>
 
-                  <label for="born"><b>Дата рождения</b></label>
-                  <input type="date" placeholder=" 01.01.2001" name="born" required>
+              <label for="born"><b>Дата рождения</b></label>
+              <input type="date" placeholder=" 01.01.2001" name="born" required>
 
-                  <label for="psw"><b>Пароль</b></label>
-                  <input type="password" placeholder=" Ведите пароль" name="psw" required>
-              
-                  <label for="psw-repeat"><b>Повторите пароль</b></label>
-                  <input type="password" placeholder="Повторите пароль" name="psw-repeat" required>
-                              
-                  <div class="clearfix">
-                    <button type="button" class="cancelbtn">Отменить</button>
-                    <button type="submit" class="signupbtn">Вход</button>
-                  </div>
-                </div>
-              </form>
-            <div id="footer">
-                <p>Связаться с нами: DeadLiners@mail.com</p>
+              <label for="psw"><b>Пароль</b></label>
+              <input type="password" placeholder=" Ведите пароль" name="psw" required>
+          
+              <label for="psw-repeat"><b>Повторите пароль</b></label>
+              <input type="password" placeholder="Повторите пароль" name="psw-repeat" required>
+                          
+              <div class="clearfix">
+                <button type="button" class="cancelbtn">Отменить</button>
+                <button type="submit" class="signupbtn">Вход</button>
+              </div>
             </div>
-        </div>
-    </div>
+          </form>
+          <div id="footer">
+              <p>Связаться с нами: DeadLiners@mail.com</p>
+          </div>
+      </div>
+  </div>
     <script>
-        function myFunction() {
-          var x = document.getElementById("myTopnav");
-          if (x.className === "topnav") {
-            x.className += " responsive";
-          } else {
-            x.className = "topnav";
-          }
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
         }
-        </script>
+      }
+    </script>
 </body>
 </html>
