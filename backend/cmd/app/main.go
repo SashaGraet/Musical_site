@@ -2,8 +2,15 @@ package main
 
 import (
 	"backend/internal/config"
+	"backend/internal/lib/logger/handlers/slogpretty"
+	"backend/internal/lib/logger/sl"
+	"backend/storage/postgres"
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 	"log/slog"
 	"os"
+
+	mwLogger "backend/internal/http-server/middleware/logger"
 )
 
 const (
@@ -18,10 +25,23 @@ func main() {
 
 	log.Info("starting application", slog.String("env", cfg.Env))
 	log.Debug("debug messages are enabled")
+	log.Error("error messages are enabled")
 
-	// TODO: init storage: PostgreSQL
+	storage, err := postgres.New(cfg.DB.ConnectionString)
+	if err != nil {
+		log.Error("failed to init storage", sl.Err(err))
+		os.Exit(1)
+	}
 
-	// TODO: init router: chi, "chi render"
+	_ = storage
+
+	router := chi.NewRouter()
+
+	router.Use(middleware.RequestID)
+	router.Use(middleware.Logger)
+	router.Use(mwLogger.New(log))
+	router.Use(middleware.Recoverer)
+	router.Use(middleware.URLFormat)
 
 	// TODO: run server
 }
@@ -31,9 +51,7 @@ func setupLogger(env string) *slog.Logger {
 
 	switch env {
 	case envLocal:
-		log = slog.New(
-			slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}),
-		)
+		log = setupPrettySlog()
 	case envProd:
 		log = slog.New(
 			slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}),
@@ -42,4 +60,16 @@ func setupLogger(env string) *slog.Logger {
 
 	return log
 
+}
+
+func setupPrettySlog() *slog.Logger {
+	opts := slogpretty.PrettyHandlerOptions{
+		SlogOpts: &slog.HandlerOptions{
+			Level: slog.LevelDebug,
+		},
+	}
+
+	handler := opts.NewPrettyHandler(os.Stdout)
+
+	return slog.New(handler)
 }

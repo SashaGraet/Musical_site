@@ -1,7 +1,7 @@
 env: "local" # local, prod
 db:
   type: "postgres"
-  connection_string: "host=localhost port=5432 user=yourusername password=yourpassword dbname=yourdbname sslmode=disable"
+  connection_string: "host=localhost port=5432 user=postgres password=passmusic52 dbname=music_site sslmode=disable"
 http_server:
   address: "localhost:8082"
   timeout: 4s
