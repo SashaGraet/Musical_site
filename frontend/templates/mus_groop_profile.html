@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/big_profile_css.css">
+    <title>Музыкальная группа</title>
+</head>
+<body>
+    <div id="pagecontainer">
+        <div class="topnav" id="myTopnav">
+            <a href="main_page_without_slider.html" class="active">Главаная</a>
+            <a href="search_group.html">Поиск</a>
+            <a href="register_page.html">Регистрация</a>
+            <a href="#login">Авторизация</a>
+            <a href="big_profile_page.html">Профиль</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+            </a>
+        </div>
+        <div id="main">
+            <div id="profile">
+                <h1>Музыкальная группа: </h1>
+                <div class="info">
+                    <label for="purpose">Ищем музыканта: </label>
+                    <label for="exp">Опыт музыканта: </label>
+                    <label for="instrument">Инструмент музыканта: </label>
+                    <label for="exp">Опыт музыканта: </label>
+                    <label for="year">Возраст музыканта</label>
+
+                    <label for="sity">Город группы: </label>
+                    <label for="phone">Телефон группы: </label>
+                    <label for="email">Почта: </label>
+                    <label for="exp">Опыт группы: </label>
+                    <label for="style">Стиль: </label>
+                </div>
+                <button type="button" name="change">Редактировать</button>
+                <button type="button" name="delete">Удалить объявление</button>
+            </div>
+
+            <div id="footer">
+                <p>Связаться с нами: DeadLiners@mail.com</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+        </script>
+</body>
+</html>
