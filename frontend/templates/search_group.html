@@ -9,39 +9,102 @@
 </head>
 <body>
     <div id="pagecontainer">
-        <div class="navbar-top" id="myNavbar">
+        <div class="topnav" id="myTopnav">
             <a href="main_page_without_slider.html" class="active">Главная</a>
-            <a href="search_group.html">Поиск</a>
+            <a href="search_group.html">Поиск участников</a>
+            <a href="search_group.html">Поиск музыкальных групп</a>
             <a href="register_page.html">Регистрация</a>
-            <a href="#login">Авторизация</a>
-            <a href="big_profile_page.html">Профиль</a>
+            <a onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Профиль</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
+              <i class="fa fa-bars"></i>
             </a>
         </div>
-        <div id="search">
-            <div class="object">
-                <div class="IMG">
-                    <img class="myImg" src="../static/images/empty_profile.png">
+        <div class="ads_page">
+            <div class="sidenav">
+                <div class="dropdown">
+                    <button class="dropbtn">Инструмент</button>
+                    <div class="dropdown-content">
+                      <a href="#">Гитара</a>
+                      <a href="#">Синтезатор</a>
+                      <a href="#">Бас-гитара</a>
+                    </div>
                 </div>
-                <div class="info">
-                    <p>Имя: 1</p>
-                    <p>Инструмент: {{player.instrument}}</p>
-                    <p>Опыт игры: {{player.play_year}}</p>
-                    <p>Город: {{player.city}}</p>
-                    <p>Связаться: {{player.email}} </p>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Опыт участника</button>
+                    <div class="dropdown-content">
+                      <a href="#">3 года</a>
+                      <a href="#">4 года</a>
+                      <a href="#">5 лет</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Возраст</button>
+                    <div class="dropdown-content">
+                      <a href="#">20</a>
+                      <a href="#">25</a>
+                      <a href="#">30</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn">Город</button>
+                    <div class="dropdown-content">
+                      <a href="#">город А</a>
+                      <a href="#">город Б</a>
+                      <a href="#">город С</a>
+                    </div>
                 </div>
             </div>
-            <div class="object">
-                <div class="IMG">
-                    <img class="myImg" src="../static/images/empty_profile.png">
+            <div id="search">
+                <div class="object">
+                    <div class="IMG">
+                        <img class="myImg" src="../static/images/empty_profile.png">
+                    </div>
+                    <div class="info">
+                        <p>Имя: 1</p>
+                        <p>Инструмент: {{player.instrument}}</p>
+                        <p>Опыт игры: {{player.play_year}}</p>
+                        <p>Город: {{player.city}}</p>
+                        <p>Связаться: {{player.email}} </p>
+                    </div>
                 </div>
-                <div class="info">
-                    <p>Имя: 2</p>
-                    <p>Инструмент: {{player.instrument}}</p>
-                    <p>Опыт игры: {{player.play_year}}</p>
-                    <p>Город: {{player.city}}</p>
-                    <p>Связаться: {{player.email}} </p>
+                <div class="object">
+                    <div class="IMG">
+                        <img class="myImg" src="../static/images/empty_profile.png">
+                    </div>
+                    <div class="info">
+                        <p>Имя: 2</p>
+                        <p>Инструмент: {{player.instrument}}</p>
+                        <p>Опыт игры: {{player.play_year}}</p>
+                        <p>Город: {{player.city}}</p>
+                        <p>Связаться: {{player.email}} </p>
+                    </div>
+                </div>
+                <div class="object">
+                    <div class="IMG">
+                        <img class="myImg" src="../static/images/empty_profile.png">
+                    </div>
+                    <div class="info">
+                        <p>Имя: 2</p>
+                        <p>Инструмент: {{player.instrument}}</p>
+                        <p>Опыт игры: {{player.play_year}}</p>
+                        <p>Город: {{player.city}}</p>
+                        <p>Связаться: {{player.email}} </p>
+                    </div>
+                </div>
+                <div class="object">
+                    <div class="IMG">
+                        <img class="myImg" src="../static/images/empty_profile.png">
+                    </div>
+                    <div class="info">
+                        <p>Имя: 2</p>
+                        <p>Инструмент: {{player.instrument}}</p>
+                        <p>Опыт игры: {{player.play_year}}</p>
+                        <p>Город: {{player.city}}</p>
+                        <p>Связаться: {{player.email}} </p>
+                    </div>
                 </div>
             </div>
         </div>

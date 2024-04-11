@@ -71,7 +71,7 @@ body {
     padding: 20px 16px;
     margin: 30px;
     border: solid black;
-    height: 100vh;
+    height: auto;
     width: 70%;
     margin-left: auto;
     margin-right: auto;
@@ -129,4 +129,12 @@ button {
   width: 200px;
   height: 50px;
   margin: 20px;
+}
+
+.container {
+  width: 90%;
+  height: auto;
+  padding: 15px;
+  /* border: solid black; */
+  margin: 10px 20px 10px 20px;
 }
