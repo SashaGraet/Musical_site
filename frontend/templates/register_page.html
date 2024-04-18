@@ -20,33 +20,27 @@
         </a>
       </div>
       <div id="main">
-          <form class="modal-main" action="../action_page.php" style="border:1px solid #ccc">
+          <form class="modal-main" style="border:1px solid #ccc" method="post">
             <div class="main_container">
               <h1>Регистрация аккаунта</h1>
               <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
               <hr>
           
               <label for="email"><b>E-mail</b></label>
-              <input type="text" placeholder=" Ведите E-mail" name="email" required>
+              <input type="text" placeholder=" Ведите E-mail" name="email" id='signup-email' required>
 
               <label for="login"><b>Логин</b></label>
-              <input type="text" placeholder=" Ведите Логин" name="login" required>
-
-              <label for="name"><b>Имя</b></label>
-              <input type="text" placeholder=" Ведите Имя" name="name" required>
-
-              <label for="surname"><b>Фамилия</b></label>
-              <input type="text" placeholder=" Ведите Фамилию" name="surname" required>
+              <input type="text" placeholder=" Ведите Логин" name="login" id='signup-login' required>
 
               <label for="psw"><b>Пароль</b></label>
-              <input type="password" placeholder=" Ведите пароль" name="psw" required>
+              <input type="password" placeholder=" Ведите пароль" name="psw" id='signup-psw' required>
           
               <label for="psw-repeat"><b>Повторите пароль</b></label>
-              <input type="password" placeholder="Повторите пароль" name="psw-repeat" required>
+              <input type="password" placeholder="Повторите пароль" name="psw-repeat" id='signup-psw-repeat' required>
                           
               <div class="clearfix">
                 <button type="button" class="cancelbtn">Отменить</button>
-                <button type="submit" class="signupbtn">Вход</button>
+                <button type="submit" class="signupbtn" value="send" id="signup-submit">Вход</button>
               </div>
             </div>
           </form>
@@ -95,6 +89,8 @@
             modal.style.display = "none";
         }
     }
+    
     </script>
+    <script src="D:\Musical_site\frontend\scripts\scripts.js"></script>
 </body>
 </html>
