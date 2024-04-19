@@ -1,11 +1,12 @@
 import React, {SyntheticEvent, useState} from "react";
-import { redirect } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const Login = () => {
 
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [my_redirect, setMyRedirect] = useState(false);
+    const location = useLocation();
 
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
@@ -26,7 +27,7 @@ const Login = () => {
     }
 
     if (my_redirect) {
-        return redirect("/");
+        <Navigate to='/' replace state={{from: location}}/>
     }
 
     return (

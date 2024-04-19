@@ -4,20 +4,20 @@ const Home = () => {
 
     const [name, setName] = useState('');
 
-    useEffect(() => {
-        (
-            async () => {
-                const responce= await fetch('http://localhost:8000/api/user', {
-                    headers: {'Content-Type': 'application/json'},
-                    credentials: 'include',
-                });
+    // useEffect(() => {
+    //     (
+    //         async () => {
+    //             const responce= await fetch('http://localhost:8000/api/user', {
+    //                 headers: {'Content-Type': 'application/json'},
+    //                 credentials: 'include',
+    //             });
 
-                const content = await Response.json;
+    //             const content = await Response.json;
 
-                setName(content.name)
-            }   
-        )();
-    });
+    //             setName(content.name)
+    //         }   
+    //     )();
+    // });
 
     return (
         <div>
