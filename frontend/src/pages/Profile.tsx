@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Context } from "..";
-import { observer } from "mobx-react-lite";
+import {ProfileContext} from "../App";
 
 const Profile = () => {
 
-    const {store} = useContext(Context)
+    const profile = useContext(ProfileContext)
+    console.log(profile?.user)
 
     // useEffect(() => {
     //     if(localStorage.getItem('token')) {
@@ -14,9 +14,9 @@ const Profile = () => {
 
     return (
         <div>
-            {`Пользователь в сети ${store.user.login}`}
+            {`Пользователь ${profile?.user ? profile.user.login : "не в сети"}`}
         </div>
     )
 }
 
-export default observer(Profile);
+export default Profile;

@@ -1,6 +1,6 @@
 import React, { SyntheticEvent, useState, useContext } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import { Context } from "..";
+import {ProfileContext} from "../App";
 
 
 const Register = () => {
@@ -11,8 +11,8 @@ const Register = () => {
     const [check_psw, setPsw] = useState('');
     const [my_redirect, setMyRedirect] = useState(false);
     const location = useLocation();
-    const {store} = useContext(Context)
     const navigate = useNavigate()
+    const profile = useContext(ProfileContext)
 
 
     return (
@@ -50,7 +50,7 @@ const Register = () => {
           <button className="btn btn-primary w-100 py-2" type="submit"
             onClick={(e) => {
               e.preventDefault();
-              store.register_user(email, login, password).then(() => {
+              profile?.registrationUser(email, login, password).then(() => {
                 navigate('/login')
               })
             }}

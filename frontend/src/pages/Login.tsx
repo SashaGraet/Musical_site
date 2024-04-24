@@ -1,15 +1,13 @@
 import React, {FC, SyntheticEvent, useContext, useState} from "react";
 import { Navigate, redirect, useLocation, useNavigate } from "react-router-dom";
-import { Context } from "..";
-import { observer } from "mobx-react-lite";
+import {ProfileContext} from "../App";
 
 const LoginForm: FC = () => {
 
     const [login, setLogin] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const {store} = useContext(Context)
     const navigate = useNavigate()
-
+    const profile = useContext(ProfileContext)
 
     return (
         <form className="form-signin w-100 m-auto">
@@ -32,7 +30,8 @@ const LoginForm: FC = () => {
           <button className="btn btn-primary w-100 py-2" type="submit"
             onClick={(e) => {
               e.preventDefault();
-              store.login_user(login, password).then(() => {
+              console.log(profile)
+              profile?.loginUser(login, password).then(() => {
                 navigate('/profile')
               })
             }}
@@ -41,4 +40,4 @@ const LoginForm: FC = () => {
     );
 };
 
-export default observer(LoginForm);
+export default LoginForm;

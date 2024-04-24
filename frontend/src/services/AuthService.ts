@@ -1,17 +1,17 @@
 import $api from "../http";
 import { AxiosResponse } from "axios";
-import { AuthResponse } from "../models/response/AuthResponse";
+import TUser from "../types/TUser";
 
 export default class AuthService {
-    static async login_user(login: string, password: string): Promise<AxiosResponse<AuthResponse>> {
-        return $api.post<AuthResponse>('/login', {login, password})
+    static async login_user(login: string, password: string): Promise<AxiosResponse<{user: Omit<TUser, "password">}& {accessToken: string}>> {
+        return $api.post('/login', {login, password})
     }
 
-    static async register_user(email: string, login: string, password: string): Promise<AxiosResponse<AuthResponse>> {
-        return $api.post<AuthResponse>('/register', {email, login, password})
+    static async register_user(email: string, login: string, password: string): Promise<AxiosResponse<{user: Omit<TUser, "password">}& {accessToken: string}>> {
+        return $api.post('/register', {email, login, password})
     }
 
-    static async logaut(): Promise<void> {
+    static async logout(): Promise<void> {
         return $api.post('/logout')
     }
 }
