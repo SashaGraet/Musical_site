@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Login from "./pages/Login";
@@ -8,6 +8,8 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Search from './pages/Search';
 import Profile from './pages/Profile';
+import { Context } from '.';
+import { observer } from 'mobx-react-lite';
 
 function App() {
   return (
@@ -28,4 +30,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);

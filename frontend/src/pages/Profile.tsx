@@ -1,33 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Context } from "..";
+import { observer } from "mobx-react-lite";
 
 const Profile = () => {
 
-    const [login, setName] = useState('');
+    const {store} = useContext(Context)
 
-
-    useEffect(() => {
-        (
-            async () => {
-                const responce = await fetch('http://localhost:8000/api/user', {
-                    mode: 'no-cors',
-                    headers: {'Content-Type': 'application/json'},
-                    credentials: 'include',
-                });
-                console.log(responce)
-
-                const content = await responce.json();
-                console.log(content)
-
-                console.log(content.login)
-            }
-        )();
-    });
+    // useEffect(() => {
+    //     if(localStorage.getItem('token')) {
+    //     store.checkAuth()
+    //     }
+    // }, [])
 
     return (
         <div>
-            {login ? 'Hi ' + login: 'Ypu lose'}
+            {`Пользователь в сети ${store.user.login}`}
         </div>
     )
 }
 
-export default Profile;
+export default observer(Profile);
