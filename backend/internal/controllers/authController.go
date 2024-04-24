@@ -25,6 +25,7 @@ func Register(c fiber.Ctx) error {
 
 	user := models.User{
 		Login:         data["login"],
+		Email:         data["email"],
 		Password_hash: passwordHash,
 	}
 
