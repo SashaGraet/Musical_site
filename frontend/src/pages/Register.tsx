@@ -1,5 +1,6 @@
 import React, { SyntheticEvent, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
 
@@ -12,9 +13,11 @@ const Register = () => {
 
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
+        console.log(my_redirect)
         
         await fetch('http://localhost:8000/api/register', {
             method: 'POST',
+            mode: 'no-cors',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 email,
@@ -24,14 +27,15 @@ const Register = () => {
         });
 
         setMyRedirect(true);
+        console.log(my_redirect)
     }
     
-    if (my_redirect) {
-        <Navigate to='/login' replace state={{from: location}}/>
+    if (true) {
+        <Navigate to='/login' replace={true}/>
     }
 
     return (
-        <form onSubmit={submit}>
+        <form onSubmit={submit} className="form-signin w-100 m-auto">
           <h1 className="h3 mb-3 fw-normal">Регистрация аккаунта</h1>
 
           <div className="form-floating">

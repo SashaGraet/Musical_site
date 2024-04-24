@@ -7,18 +7,20 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Search from './pages/Search';
+import Profile from './pages/Profile';
 
 function App() {
   return (
     <div className="App">
       <Router>
       <Navigation />
-      <main className="form-signin w-100 m-auto">
+      <main>
         <Routes>
           <Route path='/' element= {<Home/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/search' element={<Search/>}/>
+          <Route path='/profile' element={<Profile/>}/>
         </Routes>
       </main>
       </Router>
