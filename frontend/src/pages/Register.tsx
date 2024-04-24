@@ -1,6 +1,7 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, { SyntheticEvent, useState, useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import axios from "axios";
+import { Context } from "..";
+
 
 const Register = () => {
 
@@ -10,32 +11,11 @@ const Register = () => {
     const [check_psw, setPsw] = useState('');
     const [my_redirect, setMyRedirect] = useState(false);
     const location = useLocation();
+    const {store} = useContext(Context)
 
-    const submit = async (e: SyntheticEvent) => {
-        e.preventDefault();
-        console.log(my_redirect)
-        
-        await fetch('http://localhost:8000/api/register', {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                email,
-                login,
-                password
-            })
-        });
-
-        setMyRedirect(true);
-        console.log(my_redirect)
-    }
-    
-    if (true) {
-        <Navigate to='/login' replace={true}/>
-    }
 
     return (
-        <form onSubmit={submit} className="form-signin w-100 m-auto">
+        <form className="form-signin w-100 m-auto">
           <h1 className="h3 mb-3 fw-normal">Регистрация аккаунта</h1>
 
           <div className="form-floating">
@@ -66,7 +46,9 @@ const Register = () => {
             <label form="floatingInput">Repeat Password</label>
           </div>
 
-          <button className="btn btn-primary w-100 py-2" type="submit">Регистрация</button>
+          <button className="btn btn-primary w-100 py-2" type="submit"
+            onClick={() => store.register_user(email, login, password)}
+          >Регистрация</button>
         </form>
     )
 }
