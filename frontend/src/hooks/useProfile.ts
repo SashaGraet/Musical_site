@@ -26,7 +26,7 @@ function useProfile() {
         }
     }
 
-    function logout() {
+    function logoutUser() {
         try {
             localStorage.removeItem('token');
             setUser(null);
@@ -35,10 +35,21 @@ function useProfile() {
         }
     }
 
+    // async function infoUser() {
+    //     try {
+    //         const response = await AuthService.info_user();
+    //         localStorage.setItem('token', response.data.accessToken)
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
+    // }
+
+
     return {
         loginUser,
         registrationUser,
-        logout,
+        logoutUser,
+        // infoUser,
         user,
         setUser
     }

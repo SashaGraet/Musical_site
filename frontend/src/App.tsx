@@ -1,5 +1,4 @@
 import React, {createContext, useContext, useEffect} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Login from "./pages/Login";
 import Navigation from './components/Navigation';
@@ -22,7 +21,7 @@ function App() {
         <main>
           <ProfileContext.Provider value={profileManager}>
             <Routes>
-              <Route path='/' element= {<Home/>}/>
+              <Route path='/' element={<Home/>}/>
               <Route path='/login' element={<Login/>}/>
               <Route path='/register' element={<Register/>}/>
               <Route path='/search' element={<Search/>}/>
