@@ -24,9 +24,9 @@ func Register(c fiber.Ctx) error {
 	passwordHash, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
 
 	user := models.User{
-		Login:         data["login"],
-		Email:         data["email"],
-		Password_hash: passwordHash,
+		Login:        data["login"],
+		Email:        data["email"],
+		PasswordHash: passwordHash,
 	}
 
 	database.DB.Create(&user)
@@ -52,7 +52,7 @@ func Login(c fiber.Ctx) error {
 		})
 	}
 
-	if err := bcrypt.CompareHashAndPassword(user.Password_hash, []byte(data["password"])); err != nil {
+	if err := bcrypt.CompareHashAndPassword(user.PasswordHash, []byte(data["password"])); err != nil {
 		c.Status(fiber.StatusBadRequest)
 		return c.JSON(fiber.Map{
 			"message": "incorrect password",
@@ -83,11 +83,8 @@ func Login(c fiber.Ctx) error {
 	c.Cookie(&cookie)
 
 	return c.JSON(fiber.Map{
-		"user": fiber.Map{
-			"login": user.Login,
-			"email": user.Email,
-		},
 		"accessToken": token,
+		"user":        user,
 	})
 }
 
