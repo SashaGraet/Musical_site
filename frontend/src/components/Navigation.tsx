@@ -12,7 +12,7 @@ const Navigation = () => {
                   <Link to="/" className="nav-link active" aria-current="page">Главаня</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/search" className="nav-link">Поиск музыкантов</Link>
+                  <Link to="/searchusers" className="nav-link">Поиск музыкантов</Link>
                 </li>
                 <li className="nav-item">
                   <Link to="/search" className="nav-link">Поиск музыкальных групп</Link>

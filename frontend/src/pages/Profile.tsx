@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import {ProfileContext} from "../App";
 import {Image} from "react-bootstrap";
 import logo from "../images/empty_profile.jpg"
@@ -49,32 +49,6 @@ const Profile = () => {
                         </tr>
                         </tbody>
                     </table>
-                    <h3>Мои объявления</h3>
-                    <div className="border solid border-black container-fluid">
-                        <table className='table borderless size="sm"'>
-                            <h4>Ищу группу</h4>
-                            <tr>
-                                <th scope="row">Имя</th>
-                                <td>...</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Фамилия</th>
-                                <td>...</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Город</th>
-                                <td>...</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Инструмент</th>
-                                <td>...</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <h3>Мои музыкальные группы</h3>
-                    <div>
-                        <h4>Не найдено</h4>
-                    </div>
                 </div>
             </div>
         </div>
