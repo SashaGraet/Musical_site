@@ -1,6 +1,19 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import getUsers from "../api/getUsers";
+import TUser from "../types/TUser";
+import UserCard from "../components/UserCard";
 
 const SearchUsers = () => {
+    const [users, setUsers] = useState<TUser[]>([])
+    useEffect(() => {
+        getUsers(1).then(response => {
+            setUsers(response.data)
+        })
+    }, []);
+    const usersCards = users.map((user, index) => {
+        return <UserCard name={user.name} surname={user.surname} city={user.city} gender={user.gender} email={user.email} key={index}/>
+    })
+
     return (
         <div className='row g-0 text-center'>
             <div className='col-6 col-md-4'>
@@ -69,52 +82,7 @@ const SearchUsers = () => {
             <div className='col-sm-6 col-md-8'>
                 <h1>Каточки</h1>
                 <div className='container-fluid' style={{paddingRight: 40, paddingLeft: 40}}>
-                    <div className="card" style={{marginBottom: 20}}>
-                        <h5 className="card-header">Ищу музыкальную группу</h5>
-                        <div className="card-body">
-                            <h5 className="card-title">Малышев Женя</h5>
-                            <table className="table">
-                                <tbody>
-                                <tr>
-                                    <th scope="row">Город</th>
-                                    <td>Красноярск</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Инструмет</th>
-                                    <td>Гитара</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Опыт</th>
-                                    <td>3 года</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <a href="#" className="btn btn-primary">Узнать подробнее</a>
-                        </div>
-                    </div>
-                    <div className="card" style={{marginBottom: 20}}>
-                        <h5 className="card-header">Ищу музыкальную группу</h5>
-                        <div className="card-body">
-                            <h5 className="card-title">Малышев Женя</h5>
-                            <table className="table">
-                                <tbody>
-                                <tr>
-                                    <th scope="row">Город</th>
-                                    <td>Красноярск</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Инструмет</th>
-                                    <td>Гитара</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Опыт</th>
-                                    <td>3 года</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <a href="#" className="btn btn-primary">Узнать подробнее</a>
-                        </div>
-                    </div>
+                    {usersCards}
                 </div>
             </div>
         </div>

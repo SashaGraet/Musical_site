@@ -8,12 +8,17 @@ import Register from './pages/Register';
 import SearchUsers from './pages/SearchUsers';
 import Profile from './pages/Profile';
 import useProfile from "./hooks/useProfile";
+import profile from "./pages/Profile";
 
 export const ProfileContext = createContext<ReturnType<typeof useProfile> | null>(null)
-
 function App() {
   const profileManager = useProfile()
-  console.log(profileManager)
+
+
+  useEffect(() => {
+    profileManager?.infoUser()
+  }, []);
+
   return (
     <div className="App">
       <Router>

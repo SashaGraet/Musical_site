@@ -2,11 +2,14 @@ import React, { useContext } from "react";
 import {ProfileContext} from "../App";
 import {Image} from "react-bootstrap";
 import logo from "../images/empty_profile.jpg"
+import {useNavigate} from "react-router-dom";
+
 
 const Profile = () => {
 
     const profile = useContext(ProfileContext)
     console.log(profile?.user)
+    const navigate = useNavigate()
 
     return (
         <div className="container">
@@ -16,13 +19,20 @@ const Profile = () => {
                     <Image src={logo} fluid thumbnail style={{marginBottom: 15}}/>
                     <div className="d-grid gap-3">
                     <button type="button" className="btn btn-primary btn-lg">Изменить</button>
-                    <button type="button" className="btn btn-primary btn-lg">Выйти</button>
+                    <button type="button" className="btn btn-primary btn-lg" onClick={() => {
+                        profile?.logoutUser()
+                        navigate('/login')
+                    }}>Выйти</button>
                     <button type="button" className="btn btn-secondary btn-lg">Удалить аккаунт</button>
                     </div>
                 </div>
                 <div className="col-8">
                     <table className='table'>
                         <tbody>
+                        <tr>
+                            <th scope="row">Login</th>
+                            <td>{profile?.user?.login}</td>
+                        </tr>
                         <tr>
                             <th scope="row">Имя</th>
                             <td>...</td>
@@ -52,7 +62,7 @@ const Profile = () => {
                 </div>
             </div>
         </div>
-)
+    )
 }
 
 export default Profile;

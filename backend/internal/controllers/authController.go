@@ -29,7 +29,7 @@ func Register(c fiber.Ctx) error {
 		PasswordHash: passwordHash,
 	}
 
-	database.DB.Create(&user)
+	database.DB.Select("Login", "Email", "PasswordHash").Create(&user)
 
 	return c.JSON(user)
 }

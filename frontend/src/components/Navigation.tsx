@@ -14,9 +14,7 @@ const Navigation = () => {
                 <li className="nav-item">
                   <Link to="/searchusers" className="nav-link">Поиск музыкантов</Link>
                 </li>
-                <li className="nav-item">
-                  <Link to="/search" className="nav-link">Поиск музыкальных групп</Link>
-                </li>
+
                 <li className="nav-item">
                   <Link to="/register" className="nav-link">Регистрация</Link>
                 </li>
