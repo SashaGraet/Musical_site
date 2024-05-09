@@ -21,6 +21,13 @@ func Register(c fiber.Ctx) error {
 		return err
 	}
 
+	if data["login"] == "" || data["email"] == "" || data["password"] == "" {
+		c.Status(fiber.StatusBadRequest)
+		return c.JSON(fiber.Map{
+			"message": "Incorrect data",
+		})
+	}
+
 	passwordHash, _ := bcrypt.GenerateFromPassword([]byte(data["password"]), 14)
 
 	user := models.User{
@@ -29,7 +36,7 @@ func Register(c fiber.Ctx) error {
 		PasswordHash: passwordHash,
 	}
 
-	database.DB.Create(&user)
+	database.DB.Select("Login", "Email", "PasswordHash").Create(&user)
 
 	return c.JSON(user)
 }
@@ -43,19 +50,19 @@ func Login(c fiber.Ctx) error {
 
 	var user models.User
 
-	database.DB.Where("login = ?", data["login"]).First(&user)
+	database.DB.Preload("UserRoles").Where("login = ?", data["login"]).First(&user)
 
 	if user.Id == 0 {
 		c.Status(fiber.StatusNotFound)
 		return c.JSON(fiber.Map{
-			"message": "user not found",
+			"message": "User not found",
 		})
 	}
 
 	if err := bcrypt.CompareHashAndPassword(user.PasswordHash, []byte(data["password"])); err != nil {
 		c.Status(fiber.StatusBadRequest)
 		return c.JSON(fiber.Map{
-			"message": "incorrect password",
+			"message": "Incorrect password",
 		})
 	}
 
@@ -69,7 +76,7 @@ func Login(c fiber.Ctx) error {
 	if err != nil {
 		c.Status(fiber.StatusInternalServerError)
 		return c.JSON(fiber.Map{
-			"message": "could not login",
+			"message": "Could not login",
 		})
 	}
 
@@ -83,22 +90,26 @@ func Login(c fiber.Ctx) error {
 	c.Cookie(&cookie)
 
 	return c.JSON(fiber.Map{
-		"accessToken": token,
-		"user":        user,
+		"token": token,
+		"user":  user,
 	})
 }
 
 func User(c fiber.Ctx) error {
-	cookie := c.Cookies("jwt")
+	var data map[string]string
 
-	token, err := jwt.ParseWithClaims(cookie, jwt.MapClaims{}, func(token *jwt.Token) (interface{}, error) {
+	if err := json.Unmarshal(c.Body(), &data); err != nil {
+		return err
+	}
+
+	token, err := jwt.ParseWithClaims(data["token"], jwt.MapClaims{}, func(token *jwt.Token) (interface{}, error) {
 		return []byte(SecretKey), nil
 	})
 
 	if err != nil {
 		c.Status(fiber.StatusUnauthorized)
 		return c.JSON(fiber.Map{
-			"message": "unauthenticated",
+			"message": "Unauthenticated",
 		})
 	}
 
@@ -106,7 +117,7 @@ func User(c fiber.Ctx) error {
 
 	var user models.User
 
-	database.DB.Where("id = ?", claims["iss"]).First(&user)
+	database.DB.Preload("UserRoles").Where("id = ?", claims["iss"]).First(&user)
 
 	return c.JSON(user)
 }
@@ -122,6 +133,6 @@ func Logout(c fiber.Ctx) error {
 	c.Cookie(&cookie)
 
 	return c.JSON(fiber.Map{
-		"message": "success",
+		"message": "Success",
 	})
 }
