@@ -14,4 +14,5 @@ func Setup(app *fiber.App) {
 	app.Get("/api/users", controllers.Users)
 	app.Post("/api/addrole", controllers.AddRole)
 	app.Post("/api/editprofile", controllers.EditProfile)
+	app.Post("/api/changestatus", controllers.ChangeStatus)
 }

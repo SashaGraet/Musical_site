@@ -38,6 +38,12 @@ func Register(c fiber.Ctx) error {
 
 	database.DB.Select("Login", "Email", "PasswordHash").Create(&user)
 
+	status := models.StatusUser{
+		Id:     user.Id,
+		Status: false,
+	}
+	database.DB.Create(&status)
+
 	return c.JSON(user)
 }
 
@@ -50,7 +56,7 @@ func Login(c fiber.Ctx) error {
 
 	var user models.User
 
-	database.DB.Preload("UserRoles").Where("login = ?", data["login"]).First(&user)
+	database.DB.Preload("UserRole").Where("login = ?", data["login"]).First(&user)
 
 	if user.Id == 0 {
 		c.Status(fiber.StatusNotFound)
@@ -117,7 +123,7 @@ func User(c fiber.Ctx) error {
 
 	var user models.User
 
-	database.DB.Preload("UserRoles").Where("id = ?", claims["iss"]).First(&user)
+	database.DB.Preload("UserRole").Where("id = ?", claims["iss"]).First(&user)
 
 	return c.JSON(user)
 }
