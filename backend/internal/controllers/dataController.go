@@ -14,11 +14,11 @@ func Users(c fiber.Ctx) error {
 		page = 1
 	}
 
-	offset := (page - 1) * 3
+	offset := (page - 1) * 10
 
 	var users []models.User
 
-	database.DB.Offset(offset).Limit(3).Find(&users)
+	database.DB.Offset(offset).Limit(10).Find(&users)
 
 	// Создаем список пользователей только с необходимыми полями
 	var publicUsers []interface{}
