@@ -14,7 +14,6 @@ export const ProfileContext = createContext<ReturnType<typeof useProfile> | null
 function App() {
   const profileManager = useProfile()
 
-
   useEffect(() => {
     profileManager?.infoUser()
   }, []);

@@ -12,8 +12,8 @@ const SearchUsers = () => {
     }, []);
     const usersCards = users.map((user, index) => {
         return <UserCard name={user.name} surname={user.surname} city={user.city} gender={user.gender}
-                         email={user.email} experience={user.UserRoles.experience}
-                         role={user.UserRoles.role} level={user.UserRoles.level} key={index}/>
+                         email={user.email} experience={user.userRole.experience}
+                         role={user.userRole.role} level={user.userRole.level} key={index}/>
     })
 
     return (

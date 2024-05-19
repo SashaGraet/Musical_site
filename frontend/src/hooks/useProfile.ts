@@ -9,7 +9,7 @@ function useProfile() {
     async function loginUser(login: string, password: string) {
         try {
             const response = await AuthService.login_user(login, password);
-            localStorage.setItem('token', response.data.accessToken);
+            localStorage.setItem('token', response.data.token);
         } catch (e) {
             console.log(e);
         }
@@ -41,9 +41,11 @@ function useProfile() {
         }
     }
 
-    async function changeUser(login: string, name: string, surname: string, city: string, role: string, experience: string, level: string, age: string) {
+    async function changeUser(name: string, surname: string, city: string, age: string, email: string, gender: string) {
         try {
-            await AuthService.change_user(login, name, surname, city, role, experience, level, age)
+            AuthService.change_user(name, surname, city, age, email, gender).then(response => {
+                setUser(response.data)
+            })
         } catch (e) {
             console.log(e)
         }

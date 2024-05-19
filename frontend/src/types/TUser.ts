@@ -6,7 +6,7 @@ type TUser = {
   city: string,
   gender: string,
   age: string,
-  UserRoles: {
+  userRole: {
       role: string,
       experience: string,
       level: string

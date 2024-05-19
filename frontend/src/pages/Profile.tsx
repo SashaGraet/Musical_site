@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, {useContext, useEffect} from "react";
 import {ProfileContext} from "../App";
 import {Image} from "react-bootstrap";
 import logo from "../images/empty_profile.jpg"
@@ -52,15 +52,15 @@ const Profile = () => {
                     </tr>
                     <tr>
                         <th scope="row">Инструмет</th>
-                        <td>{profile?.user?.UserRoles.role}</td>
+                        <td>{profile?.user?.userRole.role}</td>
                     </tr>
                     <tr>
                         <th scope="row">Опыт</th>
-                        <td>{profile?.user?.UserRoles.experience}</td>
+                        <td>{profile?.user?.userRole.experience}</td>
                     </tr>
                     <tr>
                         <th scope="row">Уровень владения</th>
-                        <td>{profile?.user?.UserRoles.level}</td>
+                        <td>{profile?.user?.userRole.level}</td>
                     </tr>
                     <tr>
                         <th scope="row">Возраст</th>

@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from "axios";
 import TUser from "../types/TUser";
 
 export default class AuthService {
-    static async login_user(login: string, password: string): Promise<AxiosResponse<{user: TUser}& {accessToken: string}>> {
+    static async login_user(login: string, password: string): Promise<AxiosResponse<{user: TUser}& {token: string}>> {
         return $api.post('/login', {login, password})
     }
 
@@ -16,10 +16,10 @@ export default class AuthService {
     }
 
     static async info_user(): Promise<AxiosResponse<TUser>> {
-        return $api.get('/user', )
+        return $api.post('/user', {token: localStorage.getItem('token')})
     }
 
-    static async change_user(login: string, name: string, surname: string, city: string, role: string, experience: string, level: string, age: string): Promise<AxiosResponse<{user: TUser}>> {
-        return $api.post('/editprofile', {login, name, surname, city, role, experience, level, age})
+    static async change_user(name: string, surname: string, city: string, age: string, email: string, gender: string): Promise<AxiosResponse<TUser>> {
+        return $api.post('/editprofile', {name, surname, city, age:age.toString(), email, gender, token: localStorage.getItem('token')})
     }
 }
