@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useState, useContext } from "react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {ProfileContext} from "../App";
 
 
@@ -9,8 +9,6 @@ const Register = () => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [check_psw, setPsw] = useState('');
-    const [my_redirect, setMyRedirect] = useState(false);
-    const location = useLocation();
     const navigate = useNavigate()
     const profile = useContext(ProfileContext)
 

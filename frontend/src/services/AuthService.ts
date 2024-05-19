@@ -18,4 +18,8 @@ export default class AuthService {
     static async info_user(): Promise<AxiosResponse<TUser>> {
         return $api.get('/user', )
     }
+
+    static async change_user(login: string, name: string, surname: string, city: string, role: string, experience: string, level: string, age: string): Promise<AxiosResponse<{user: TUser}>> {
+        return $api.post('/editprofile', {login, name, surname, city, role, experience, level, age})
+    }
 }

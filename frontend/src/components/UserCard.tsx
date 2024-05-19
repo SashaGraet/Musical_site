@@ -3,7 +3,11 @@ type UserCardProps = {
     name: string,
     surname: string,
     city: string,
+    role: string,
+    experience: string
+    level: string,
     gender: string,
+    // age: string,
     email: string,
 }
 const UserCard: React.FC<UserCardProps> = props =>  {
@@ -21,17 +25,29 @@ const UserCard: React.FC<UserCardProps> = props =>  {
                         <td>{props.city}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Пол</th>
-                        <td>{props.gender}</td>
+                        <th scope="row">Инструмент</th>
+                        <td>{props.role}</td>
                     </tr>
 
                     <tr style={{display: elementsDisplay}}>
-                        <th scope="row">Фамилия</th>
-                        <td>{props.surname}</td>
+                        <th scope="row">Фамилия Имя</th>
+                        <td>{props.surname}, {props.name}</td>
                     </tr>
                     <tr style={{display: elementsDisplay}}>
                         <th scope="row">Почта</th>
                         <td>{props.email}</td>
+                    </tr>
+                    <tr style={{display: elementsDisplay}}>
+                        <th scope="row">Опыт</th>
+                        <td>{props.experience}</td>
+                    </tr>
+                    <tr style={{display: elementsDisplay}}>
+                        <th scope="row">Уровень владения</th>
+                        <td>{props.level}</td>
+                    </tr>
+                    <tr style={{display: elementsDisplay}}>
+                        <th scope="row">Пол</th>
+                        <td>{props.gender}</td>
                     </tr>
                     </tbody>
                 </table>

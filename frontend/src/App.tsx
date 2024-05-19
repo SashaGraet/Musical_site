@@ -8,7 +8,7 @@ import Register from './pages/Register';
 import SearchUsers from './pages/SearchUsers';
 import Profile from './pages/Profile';
 import useProfile from "./hooks/useProfile";
-import profile from "./pages/Profile";
+import ChangeProfile from "./pages/ChangeProfile";
 
 export const ProfileContext = createContext<ReturnType<typeof useProfile> | null>(null)
 function App() {
@@ -31,6 +31,7 @@ function App() {
               <Route path='/register' element={<Register/>}/>
               <Route path='/searchusers' element={<SearchUsers/>}/>
               <Route path='/profile' element={<Profile/>}/>
+              <Route path='/changeProfile' element={<ChangeProfile/>}/>
             </Routes>
           </ProfileContext.Provider>
         </main>

@@ -41,6 +41,14 @@ function useProfile() {
         }
     }
 
+    async function changeUser(login: string, name: string, surname: string, city: string, role: string, experience: string, level: string, age: string) {
+        try {
+            await AuthService.change_user(login, name, surname, city, role, experience, level, age)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
 
     return {
         loginUser,
@@ -48,7 +56,8 @@ function useProfile() {
         logoutUser,
         infoUser,
         user,
-        setUser
+        setUser,
+        changeUser
     }
 }
 
