@@ -10,7 +10,7 @@ type User struct {
 	City         string   `json:"city"`
 	Gender       string   `json:"gender"`
 	Age          uint     `json:"age"`
-	UserRole     UserRole `json:"user_role" gorm:"foreignKey:Id"`
+	UserRole     UserRole `json:"userRole" gorm:"foreignKey:Id"`
 }
 
 type UserRole struct {
