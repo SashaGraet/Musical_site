@@ -12,6 +12,9 @@ function useChangeProfile(profile: ReturnType<typeof useProfile> | null) {
     // const [level, setLevel] = useState(profile?.user?.userRole.level);
     const [age, setAge] = useState(profile?.user?.age);
     const [gender, setGender] = useState(profile?.user?.gender);
+    const [role, setRole] = useState(profile?.user?.userRole.role);
+    const [experience, setExp] = useState(profile?.user?.userRole.experience);
+    const [level, setLevel] = useState(profile?.user?.userRole.level);
 
     useEffect(() => {
         setEmail(profile?.user?.email)
@@ -20,6 +23,9 @@ function useChangeProfile(profile: ReturnType<typeof useProfile> | null) {
         setCity(profile?.user?.city)
         setAge(profile?.user?.age)
         setGender(profile?.user?.gender)
+        setRole(profile?.user?.userRole.role)
+        setExp(profile?.user?.userRole.experience)
+        setLevel(profile?.user?.userRole.level)
     }, [profile]);
 
     return {
@@ -29,6 +35,9 @@ function useChangeProfile(profile: ReturnType<typeof useProfile> | null) {
         city, setCity,
         age, setAge,
         gender, setGender,
+        role, setRole,
+        experience, setExp,
+        level, setLevel,
     }
 
 }

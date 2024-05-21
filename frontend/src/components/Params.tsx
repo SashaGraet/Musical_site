@@ -5,19 +5,19 @@ const Params = () => {
                 <label>Город</label>
             </div>
             <div id='Role'>
-                <label>Город</label>
+                <label>Инструмент</label>
             </div>
             <div id='Expirience'>
-                <label>Город</label>
+                <label>Опыт</label>
             </div>
             <div id='level'>
-                <label>Город</label>
+                <label>Уровень</label>
             </div>
             <div id='Gender'>
-                <label>Город</label>
+                <label>Пол</label>
             </div>
             <div id='Age'>
-                <label>Город</label>
+                <label>Возраст</label>
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import {useState} from "react";
 import TUser from "../types/TUser"
 import AuthService from "../services/AuthService";
+import exp from "node:constants";
 
 
 function useProfile() {
@@ -41,9 +42,9 @@ function useProfile() {
         }
     }
 
-    async function changeUser(name: string, surname: string, city: string, age: string, email: string, gender: string) {
+    async function changeUser(name: string, surname: string, city: string, age: string, email: string, gender: string, role: string, experience: string, level: string) {
         try {
-            AuthService.change_user(name, surname, city, age, email, gender).then(response => {
+            AuthService.change_user(name, surname, city, age, email, gender, role, experience, level).then(response => {
                 setUser(response.data)
             })
         } catch (e) {

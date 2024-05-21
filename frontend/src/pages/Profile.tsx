@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext} from "react";
 import {ProfileContext} from "../App";
 import {Image} from "react-bootstrap";
 import logo from "../images/empty_profile.jpg"
@@ -35,36 +35,40 @@ const Profile = () => {
                 <table className='table'>
                     <tbody>
                     <tr>
-                        <th scope="row">Login</th>
-                        <td>{profile?.user?.login}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Имя</th>
+                        <th scope="row"><h4>Имя</h4></th>
                         <td>{profile?.user?.name}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Фамилия</th>
+                        <th scope="row"><h4>Фамилия</h4></th>
                         <td>{profile?.user?.surname}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Город</th>
+                        <th scope="row"><h4>Имя</h4></th>
                         <td>{profile?.user?.city}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Инструмет</th>
+                        <th scope="row"><h4>Почта</h4></th>
+                        <td>{profile?.user?.email}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><h4>Инструмент</h4></th>
                         <td>{profile?.user?.userRole.role}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Опыт</th>
+                        <th scope="row"><h4>Опыт</h4></th>
                         <td>{profile?.user?.userRole.experience}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Уровень владения</th>
+                        <th scope="row"><h4>Уровень владения</h4></th>
                         <td>{profile?.user?.userRole.level}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Возраст</th>
+                        <th scope="row"><h4>Возраст</h4></th>
                         <td>{profile?.user?.age}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><h4>Пол</h4></th>
+                        <td>{profile?.user?.gender}</td>
                     </tr>
                     </tbody>
                 </table>

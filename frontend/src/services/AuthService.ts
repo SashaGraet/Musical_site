@@ -19,7 +19,7 @@ export default class AuthService {
         return $api.post('/user', {token: localStorage.getItem('token')})
     }
 
-    static async change_user(name: string, surname: string, city: string, age: string, email: string, gender: string): Promise<AxiosResponse<TUser>> {
-        return $api.post('/editprofile', {name, surname, city, age:age.toString(), email, gender, token: localStorage.getItem('token')})
+    static async change_user(name: string, surname: string, city: string, age: string, email: string, gender: string, role: string, experience: string, level: string): Promise<AxiosResponse<TUser>> {
+        return $api.post('/editprofile', {name, surname, city, age:age.toString(), email, gender, role, experience, level, token: localStorage.getItem('token')})
     }
 }
