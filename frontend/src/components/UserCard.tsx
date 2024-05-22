@@ -7,7 +7,7 @@ type UserCardProps = {
     experience: string
     level: string,
     gender: string,
-    // age: string,
+    age: string,
     email: string,
 }
 const UserCard: React.FC<UserCardProps> = props =>  {

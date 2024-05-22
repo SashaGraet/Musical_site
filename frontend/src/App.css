@@ -58,7 +58,15 @@
   border-top-right-radius: 0;
 }
 
-.elem{
+.elem {
   padding: 10px;
+}
+
+.parametr {
+  border: solid lightgray;
+  padding: 15px;
+  margin-left: 20px;
+  margin-bottom: 15px;
+  border-radius: 15px;
 }
 
