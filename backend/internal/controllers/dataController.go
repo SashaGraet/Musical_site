@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"github.com/gofiber/fiber/v3"
 	"github.com/golang-jwt/jwt/v5"
+	"net/url"
 	"strconv"
 	"strings"
 )
@@ -122,12 +123,19 @@ func Users(c fiber.Ctx) error {
 
 	var users []models.User
 
-
 	database.DB.Offset(offset).Limit(10).Find(&users)
 
 	query := database.DB.Preload("UserRole").Model(&models.User{})
 
 	if genders := c.Query("gender"); genders != "" {
+		genders, err = url.QueryUnescape(genders)
+		if err != nil {
+			c.Status(fiber.StatusBadRequest)
+			return c.JSON(fiber.Map{
+				"message": "Invalid gender parameter",
+			})
+		}
+		fmt.Print(genders)
 		genderList := strings.Split(genders, ",")
 		query = query.Where("gender IN (?)", genderList)
 	}
@@ -154,11 +162,25 @@ func Users(c fiber.Ctx) error {
 	}
 
 	if cities := c.Query("city"); cities != "" {
+		cities, err = url.QueryUnescape(cities)
+		if err != nil {
+			c.Status(fiber.StatusBadRequest)
+			return c.JSON(fiber.Map{
+				"message": "Invalid city parameter",
+			})
+		}
 		citiesList := strings.Split(cities, ",")
 		query = query.Where("city IN (?)", citiesList)
 	}
 
 	if roles := c.Query("role"); roles != "" {
+		roles, err = url.QueryUnescape(roles)
+		if err != nil {
+			c.Status(fiber.StatusBadRequest)
+			return c.JSON(fiber.Map{
+				"message": "Invalid role parameter",
+			})
+		}
 		rolesList := strings.Split(roles, ",")
 		query = query.Joins("JOIN user_roles ON users.id = user_roles.id").
 			Where("user_roles.role IN (?)", rolesList)

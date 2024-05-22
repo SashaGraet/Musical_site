@@ -1,6 +1,22 @@
 import React from "react";
+import CheckBoxGroup from "./CheckBoxGroup";
+import CheckBox from "./CheckBox";
+import useFilters from "../hooks/useFilters";
+import getUsers from "../api/getUsers";
+// .http://localhost:8000/api/users?gender=Мужской,Женский&role=Гитарист,Барабанщик&city=Москва,Красноярск&age_group=18_25,25_40
 
-const Params = () => {
+type ParamsProps = {
+    setFiltersString: React.Dispatch<React.SetStateAction<string>>
+}
+
+const Params: React.FC<ParamsProps> = props => {
+    const {setCheckBoxIsActive, filters, activeCheckBoxesToString} = useFilters([{filterName: 'Пол', filterKey: 'gender', checkBoxes: [{key: 'Men', value: 'Мужской', isActive: false},{key: 'Women', value: 'Женский', isActive: false}]}])
+    const filtersBlocks = filters.map(filter => {
+        const checkBoxes = filter.checkBoxes.map(checkBox => {
+            return <CheckBox text={checkBox.value} isActive={checkBox.isActive} setIsActive={() => {setCheckBoxIsActive(filter.filterName, checkBox.value, !checkBox.isActive)}}/>
+            })
+        return <CheckBoxGroup title={filter.filterName} children={checkBoxes}/>
+    })
     return (
         <div>
             <div id='City' className='parametr' style={{height: '250px'}}>
@@ -116,17 +132,9 @@ const Params = () => {
                     <label>Опытный</label>
                 </div>
             </div>
-            <div id='Gender' className='parametr'>
-                <h4>Пол</h4>
-                <div>
-                    <input type="checkbox"/>
-                    <label>Мужской</label>
-                </div>
-                <div>
-                    <input type="checkbox"/>
-                    <label>Женский</label>
-                </div>
-            </div>
+
+            {filtersBlocks}
+
             <div id='Age' className='parametr'>
                 <h4>Возраст</h4>
                 <div>
@@ -147,17 +155,14 @@ const Params = () => {
                 </div>
             </div>
             <button className="btn btn-primary" onClick={() => {
+                props.setFiltersString(activeCheckBoxesToString())
+            }}>Применить фильтры</button>
+
+            <button className="btn btn-primary" onClick={() => {
                 const list = document.getElementsByTagName("input");
                 for (let i = 0; i < list.length; i++) {
                     list[i].checked = false
                 }
-            }}>Применить фильтры</button>
-            <button className="btn btn-primary" onClick={() => {
-                const list = document.getElementsByTagName("input");
-                for (let i = 0; i < list.length; i++) {
-                    if (list[i].value) {
-                    console.log(list[i].list)
-                }}
             }}>Сбросить фильтры</button>
 
         </div>
