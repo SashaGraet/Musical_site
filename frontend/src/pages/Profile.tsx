@@ -28,7 +28,6 @@ const Profile = () => {
                         }}>Выйти
                         </button>
                         <button type="button" className="btn btn-secondary btn-lg">Вывести профиль</button>
-                        <button type="button" className="btn btn-danger btn-lg">Удалить аккаунт</button>
                     </div>
                 </div>
                 <div className="col-8">
