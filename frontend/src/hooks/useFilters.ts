@@ -50,10 +50,10 @@ function useFilters (initialFilters: TFilter[]) {
                     if (!isHaveActiveFilter) {
                         isHaveActiveFilter = true
                     }
-                    finishString += `&${filter.filterKey}=${checkBox.value}`
+                    finishString += `&${filter.filterKey}=${checkBox.key}`
 
                 } else if (isHaveActiveCheckBox && checkBox.isActive) {
-                    finishString += `,${checkBox.value}`
+                    finishString += `,${checkBox.key}`
                 }
             })
         })

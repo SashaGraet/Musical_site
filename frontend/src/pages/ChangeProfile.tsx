@@ -111,7 +111,7 @@ const ChangeProfile = () => {
                                 }
                             }
                         }}
-                >Регистрация
+                >Сохранить
                 </button>
             </form>
         </div>

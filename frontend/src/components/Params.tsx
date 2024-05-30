@@ -19,7 +19,7 @@ const Params: React.FC<ParamsProps> = props => {
             ]},
         {filterName: 'Инструмент', filterKey: 'role', checkBoxes: [
             {key: 'Барабанщик', value: 'Барабанщик', isActive: false}, {key: 'Певец', value: 'Певец', isActive: false},
-            {key: 'Гитарист', value: 'Гитарист', isActive: false}, {key: '', value: 'Красноярск', isActive: false},
+            {key: 'Гитарист', value: 'Гитарист', isActive: false},
             ]},
         {filterName: 'Пол', filterKey: 'gender', checkBoxes: [
             {key: 'Мужской', value: 'Мужской', isActive: false},{key: 'Женский', value: 'Женский', isActive: false}
