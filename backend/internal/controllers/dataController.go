@@ -33,7 +33,7 @@ func EditProfile(c fiber.Ctx) error {
 	claims := token.Claims.(jwt.MapClaims)
 
 	var user models.User
-	database.DB.Where("id = ?", claims["iss"]).First(&user)
+	database.DB.Preload("UserRole").Preload("StatusUser").Where("id = ?", claims["iss"]).First(&user)
 
 	fields := []string{"name", "surname", "city", "gender", "email"}
 	for _, field := range fields {
@@ -105,8 +105,6 @@ func EditProfile(c fiber.Ctx) error {
 		}
 	}
 
-	database.DB.Preload("UserRole").Where("id = ?", claims["iss"]).First(&user)
-
 	database.DB.Save(&user)
 
 	return c.JSON(user)
@@ -125,7 +123,7 @@ func Users(c fiber.Ctx) error {
 
 	database.DB.Offset(offset).Limit(10).Find(&users)
 
-	query := database.DB.Preload("UserRole").Model(&models.User{})
+	query := database.DB.Preload("UserRole").Preload("StatusUser").Model(&models.User{})
 
 	if genders := c.Query("gender"); genders != "" {
 		genders, err = url.QueryUnescape(genders)

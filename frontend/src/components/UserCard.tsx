@@ -21,21 +21,16 @@ const UserCard: React.FC<UserCardProps> = props =>  {
                 <table className="table">
                     <tbody>
                     <tr>
+                        <th scope="row">Фамилия Имя</th>
+                        <td>{props.surname}, {props.name}</td>
+                    </tr>
+                    <tr>
                         <th scope="row">Город</th>
                         <td>{props.city}</td>
                     </tr>
                     <tr>
                         <th scope="row">Инструмент</th>
                         <td>{props.role}</td>
-                    </tr>
-
-                    <tr style={{display: elementsDisplay}}>
-                        <th scope="row">Фамилия Имя</th>
-                        <td>{props.surname}, {props.name}</td>
-                    </tr>
-                    <tr style={{display: elementsDisplay}}>
-                        <th scope="row">Почта</th>
-                        <td>{props.email}</td>
                     </tr>
                     <tr style={{display: elementsDisplay}}>
                         <th scope="row">Опыт</th>
@@ -48,6 +43,14 @@ const UserCard: React.FC<UserCardProps> = props =>  {
                     <tr style={{display: elementsDisplay}}>
                         <th scope="row">Пол</th>
                         <td>{props.gender}</td>
+                    </tr>
+                    <tr style={{display: elementsDisplay}}>
+                        <th scope="row">Почта</th>
+                        <td>{props.email}</td>
+                    </tr>
+                    <tr style={{display: elementsDisplay}}>
+                        <th scope="row">Возраст</th>
+                        <td>{props.age}</td>
                     </tr>
                     </tbody>
                 </table>

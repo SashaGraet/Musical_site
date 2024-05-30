@@ -11,6 +11,9 @@ type TUser = {
       experience: string,
       level: string
   }
+  statusUser: {
+      status: string
+  }
 }
 
 export default TUser;

@@ -10,150 +10,41 @@ type ParamsProps = {
 }
 
 const Params: React.FC<ParamsProps> = props => {
-    const {setCheckBoxIsActive, filters, activeCheckBoxesToString} = useFilters([{filterName: 'Пол', filterKey: 'gender', checkBoxes: [{key: 'Men', value: 'Мужской', isActive: false},{key: 'Women', value: 'Женский', isActive: false}]}])
+    const {setCheckBoxIsActive, filters, activeCheckBoxesToString} = useFilters([
+        {filterName: 'Город', filterKey: 'city', checkBoxes: [
+            {key: 'Москва', value: 'Москва', isActive: false}, {key: 'Красноярск', value: 'Красноярск', isActive: false},
+            {key: 'Челябинск', value: 'Челябинск', isActive: false}, {key: 'Екатеренбург', value: 'Екатеренбург', isActive: false},
+            {key: 'Рязань', value: 'Рязань', isActive: false}, {key: 'Казань', value: 'Казань', isActive: false},
+            {key: 'Поронайск', value: 'Поронайск', isActive: false}, {key: 'Самара', value: 'Самара', isActive: false}
+            ]},
+        {filterName: 'Инструмент', filterKey: 'role', checkBoxes: [
+            {key: 'Барабанщик', value: 'Барабанщик', isActive: false}, {key: 'Певец', value: 'Певец', isActive: false},
+            {key: 'Гитарист', value: 'Гитарист', isActive: false}, {key: '', value: 'Красноярск', isActive: false},
+            ]},
+        {filterName: 'Пол', filterKey: 'gender', checkBoxes: [
+            {key: 'Мужской', value: 'Мужской', isActive: false},{key: 'Женский', value: 'Женский', isActive: false}
+            ]},
+        {filterName: 'Возраст', filterKey: 'age_group', checkBoxes: [
+            {key: 'under_18', value: 'Меньше 18', isActive: false}, {key: '18_25', value: 'От 18 до 25', isActive: false},
+            {key: '25_40', value: 'От 25 до 40', isActive: false}, {key: 'over_40', value: 'Больше 40', isActive: false}
+            ]},
+        {filterName: 'Уровень', filterKey: 'experience', checkBoxes: [
+            {key: '', value: 'Начинающий', isActive: false}, {key: '', value: 'Опытный', isActive: false}, {key: 'Продвинутый', value: 'Красноярск', isActive: false}
+            ]},
+    ])
+
+
     const filtersBlocks = filters.map(filter => {
         const checkBoxes = filter.checkBoxes.map(checkBox => {
             return <CheckBox text={checkBox.value} isActive={checkBox.isActive} setIsActive={() => {setCheckBoxIsActive(filter.filterName, checkBox.value, !checkBox.isActive)}}/>
             })
         return <CheckBoxGroup title={filter.filterName} children={checkBoxes}/>
     })
+
     return (
         <div>
-            <div id='City' className='parametr' style={{height: '250px'}}>
-                <h4>Город</h4>
-                <div style={{height: '180px', overflow: "auto"}}>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Бас - гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                </div>
-            </div>
-            <div id='Role' className='parametr' style={{height: '250px'}}>
-                <h4>Инструмент</h4>
-                <div style={{height: '180px', overflow: "auto"}}>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Бас - гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                    <div>
-                        <input type="checkbox"/>
-                        <label>Гитара</label>
-                    </div>
-                </div>
-            </div>
-            <div id='level' className='parametr'>
-                <h4>Уровень</h4>
-                <div>
-                    <input type="checkbox"/>
-                    <label>Начинающий</label>
-                </div>
-                <div>
-                    <input type="checkbox"/>
-                    <label>Продвинутый</label>
-                </div>
-                <div>
-                    <input type="checkbox"/>
-                    <label>Опытный</label>
-                </div>
-            </div>
-
             {filtersBlocks}
 
-            <div id='Age' className='parametr'>
-                <h4>Возраст</h4>
-                <div>
-                    <input type="checkbox"/>
-                    <label>до 18</label>
-                </div>
-                <div>
-                    <input type="checkbox"/>
-                    <label>18 - 25</label>
-                </div>
-                <div>
-                    <input type="checkbox"/>
-                    <label>25 - 40</label>
-                </div>
-                <div>
-                    <input type="checkbox"/>
-                    <label>40+</label>
-                </div>
-            </div>
             <button className="btn btn-primary" onClick={() => {
                 props.setFiltersString(activeCheckBoxesToString())
             }}>Применить фильтры</button>

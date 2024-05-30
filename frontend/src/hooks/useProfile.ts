@@ -33,6 +33,14 @@ function useProfile() {
         }
     }
 
+    function changeStatus() {
+        try {
+            AuthService.change_status();
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     async function infoUser() {
         try {
             const response = await AuthService.info_user();
@@ -60,7 +68,8 @@ function useProfile() {
         infoUser,
         user,
         setUser,
-        changeUser
+        changeUser,
+        changeStatus
     }
 }
 

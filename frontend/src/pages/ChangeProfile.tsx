@@ -41,9 +41,18 @@ const ChangeProfile = () => {
                 </div>
                 <div className="form-group elem">
                     <h4>Город</h4>
-                    <input type="text" className="form-control" value={city ? city : ''} required
-                           onChange={e => setCity(e.target.value)}
-                    />
+                    <select className="form-control" onChange={e => setCity(e.target.value)}>
+                        <option value={city}>Город пользователя {city}</option>
+                        <option value='Красноярск'>Красноярск</option>
+                        <option value='Челябинск'>Челябинск</option>
+                        <option value='Москва'>Москва</option>
+                        <option value='Казань'>Казань</option>
+                        <option value='Екатеренбург'>Екатеренбург</option>
+                        <option value='Рязань'>Рязань</option>
+                        <option value='Поронайск'>Поронайск</option>
+                        <option value='Самара'>Самара</option>
+                        <option value='Рязань'>Рязань</option>
+                    </select>
                 </div>
                 <div className="form-group elem">
                     <h4>Возраст</h4>
@@ -53,21 +62,29 @@ const ChangeProfile = () => {
                 </div>
                 <div className="form-group elem">
                     <h4>Пол</h4>
-                    <input type="text" className="form-control" value={gender ? gender : ''} required
-                           onChange={e => setGender(e.target.value)}
-                    />
+                    <select className="form-control" onChange={e => setGender(e.target.value)}>
+                        <option value={gender}>Пол пользователя {gender}</option>
+                        <option value='Мужской'>Мужской</option>
+                        <option value='Женский'>Жеснкий</option>
+                    </select>
                 </div>
                 <div className="form-group elem">
                     <h4>Инструмент</h4>
-                    <input type="text" className="form-control" value={role ? role : ''} required
-                           onChange={e => setRole(e.target.value)}
-                    />
+                    <select className="form-control" onChange={e => setRole(e.target.value)}>
+                        <option value={role}>Инструмент пользователя {role}</option>
+                        <option value='Певец'>Певец</option>
+                        <option value='Барабанщик'>Барабанщик</option>
+                        <option value='Гитарист'>Гитарист</option>
+                    </select>
                 </div>
                 <div className="form-group elem">
                     <h4>Уровень</h4>
-                    <input type="text" className="form-control" value={experience ? experience : ''} required
-                           onChange={e => setExp(e.target.value)}
-                    />
+                    <select className="form-control" onChange={e => setExp(e.target.value)}>
+                        <option value={experience}>Уровень пользователя {experience}</option>
+                        <option value='Начинающий'>Начинающий</option>
+                        <option value='Опытный'>Опытный</option>
+                        <option value='Продвинутый'>Продвинутый</option>
+                    </select>
                 </div>
                 <div className="form-group elem" style={{paddingBottom: '20px'}}>
                     <h4>Опыт</h4>
@@ -84,23 +101,16 @@ const ChangeProfile = () => {
                 <button className="btn btn-primary w-50 py-2" type="submit"
                         onClick={(e) => {
                             e.preventDefault();
-                            if (profile && profile.user && name && surname && city && age && email && gender) {
-                                if (role === undefined) {
-                                    alert('Вы не ввели инструмент')
-                                    document.forms[0].reset()
-                                }
-
-                                else if (role && (experience === '' || level === '')) {
-                                    profile.changeUser(name, surname, city, age, email, gender, role,  '', '').then(() => {
-                                        navigate('/profile')
-                                })}
-
-                                else if (profile && profile.user && name && surname && city && age && email && gender && experience && level) {
-                                profile.changeUser(name, surname, city, age, email, gender, role, experience, level).then(() => {
+                            if (profile && name && surname && city && age && email && gender) {
+                                if (role && experience && level) {
+                                    profile.changeUser(name, surname, city, age, email, gender, role, experience, level)
                                     navigate('/profile')
-                                })
+                                } else {
+                                    profile.changeUser(name, surname, city, age, email, gender, '', '', '')
+                                    navigate('/profile')
+                                }
                             }
-                        }}}
+                        }}
                 >Регистрация
                 </button>
             </form>

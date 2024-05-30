@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import getUsers from "../api/getUsers";
 import TUser from "../types/TUser";
 import UserCard from "../components/UserCard";
-import params from "../components/Params";
 import Params from "../components/Params";
 
 const SearchUsers = () => {

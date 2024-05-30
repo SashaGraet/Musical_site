@@ -3,6 +3,7 @@ import {ProfileContext} from "../App";
 import {Image} from "react-bootstrap";
 import logo from "../images/empty_profile.jpg"
 import {useNavigate} from "react-router-dom";
+import {forEach} from "react-bootstrap/ElementChildren";
 
 
 const Profile = () => {
@@ -21,28 +22,32 @@ const Profile = () => {
                         <button type="button" className="btn btn-primary btn-lg" onClick={() => {
                             navigate('/changeProfile')
                         }}
-                        >Изменить</button>
+                        >Изменить
+                        </button>
                         <button type="button" className="btn btn-primary btn-lg" onClick={() => {
                             profile?.logoutUser()
                             navigate('/login')
                         }}>Выйти
                         </button>
-                        <button type="button" className="btn btn-secondary btn-lg">Вывести профиль</button>
+                        <button type="button" className="btn btn-secondary btn-lg" onClick={() => {
+                            console.log('поменял')
+                            profile?.changeStatus()
+                        }}>Вывести профиль</button>
                     </div>
                 </div>
                 <div className="col-8">
-                <table className='table'>
-                    <tbody>
-                    <tr>
-                        <th scope="row"><h4>Имя</h4></th>
-                        <td>{profile?.user?.name}</td>
+                    <table className='table'>
+                        <tbody>
+                        <tr>
+                            <th scope="row"><h4>Имя</h4></th>
+                            <td>{profile?.user?.name}</td>
                     </tr>
                     <tr>
                         <th scope="row"><h4>Фамилия</h4></th>
                         <td>{profile?.user?.surname}</td>
                     </tr>
                     <tr>
-                        <th scope="row"><h4>Имя</h4></th>
+                        <th scope="row"><h4>Город</h4></th>
                         <td>{profile?.user?.city}</td>
                     </tr>
                     <tr>
