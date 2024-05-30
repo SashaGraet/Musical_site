@@ -1,20 +1,23 @@
 import React, {createContext, useContext, useEffect} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Login from "./pages/Login";
 import Navigation from './components/Navigation';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home';
 import Register from './pages/Register';
-import Search from './pages/Search';
+import SearchUsers from './pages/SearchUsers';
 import Profile from './pages/Profile';
 import useProfile from "./hooks/useProfile";
+import ChangeProfile from "./pages/ChangeProfile";
 
 export const ProfileContext = createContext<ReturnType<typeof useProfile> | null>(null)
-
 function App() {
   const profileManager = useProfile()
-  console.log(profileManager)
+
+  useEffect(() => {
+    profileManager?.infoUser()
+  }, []);
+
   return (
     <div className="App">
       <Router>
@@ -22,11 +25,12 @@ function App() {
         <main>
           <ProfileContext.Provider value={profileManager}>
             <Routes>
-              <Route path='/' element= {<Home/>}/>
+              <Route path='/' element={<Home/>}/>
               <Route path='/login' element={<Login/>}/>
               <Route path='/register' element={<Register/>}/>
-              <Route path='/search' element={<Search/>}/>
+              <Route path='/searchusers' element={<SearchUsers/>}/>
               <Route path='/profile' element={<Profile/>}/>
+              <Route path='/changeProfile' element={<ChangeProfile/>}/>
             </Routes>
           </ProfileContext.Provider>
         </main>

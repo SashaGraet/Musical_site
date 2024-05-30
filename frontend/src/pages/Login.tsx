@@ -1,4 +1,4 @@
-import React, {FC, SyntheticEvent, useContext, useState} from "react";
+import React, {FC, SyntheticEvent, useContext, useEffect, useState} from "react";
 import { Navigate, redirect, useLocation, useNavigate } from "react-router-dom";
 import {ProfileContext} from "../App";
 
@@ -8,6 +8,11 @@ const LoginForm: FC = () => {
     const [password, setPassword] = useState<string>('');
     const navigate = useNavigate()
     const profile = useContext(ProfileContext)
+    useEffect(() => {
+        if (profile?.user != null) {
+            navigate('/profile')
+        }
+    }, [profile?.user]);
 
     return (
         <form className="form-signin w-100 m-auto">
@@ -30,9 +35,10 @@ const LoginForm: FC = () => {
           <button className="btn btn-primary w-100 py-2" type="submit"
             onClick={(e) => {
               e.preventDefault();
-              console.log(profile)
               profile?.loginUser(login, password).then(() => {
-                navigate('/profile')
+                  profile?.infoUser().then(() => console.log(profile?.user))
+
+                  navigate('/profile')
               })
             }}
           >Войти</button>
